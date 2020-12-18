@@ -7,17 +7,19 @@ class Vue{
 		<html>
 		<head> 
 			<title>TD6: login form </title>
+			<link rel='stylesheet' href='vue/style.css'>
 		</head>
 		<body>
 			<br>
 			<br>
-			<form action="index.php" method="post">
-				<label for="pseudo">Entrer votre pseudo: </label>
-				<input type="text" name="pseudo" id="pseudo" required>
-				<br>
-				<br>
-				<input type="submit" name="soumettre" value="envoyer"/>
-			</form>
+			<div id="login" class='cont' >
+				<form action="index.php" method="post">
+					<label id="labelpseudo" for="pseudo">Entrez votre pseudo</label>
+					<input type="text" name="pseudo" id="pseudo" required>
+					<br>
+					<input id="submit" type="submit" name="soumettre" value="envoyer"/>
+				</form>
+			</div>
 			<br>
 			<br>
 		</body>
@@ -26,32 +28,47 @@ class Vue{
 	}
 
 	//TODO: add method
-	function afficherSalon(array $chatitems){
+
+	function getcolor($value){
+		if ($value+$value*8>255){
+			return 'rgb(255,0,0);';
+		} else {
+			return 'rgb(255,'.strval(255-($value+$value*8)).','.strval(255-($value+$value*8)).');';
+		}
+	}
+	function afficherTiles($tiles){
 		?>
 		<!DOCTYPE html>
 		<html>
 		<head> 
-			<title>TD6: Salon textuel </title>
+			<title>2048</title>
+			<link rel='stylesheet' href='vue/style.css'>
 		</head>
 		<body>
 			<br>
 			<br>
-			<div style="border: solid;">
+			<div id="tileset" class='cont' style="border: solid;">
+				<div>
 				<?php
-					foreach (array_reverse($chatitems) as $_chatitem){
-						echo($_chatitem.'<br/>');
+					echo('<div>');
+					foreach ($tiles as $i=>$tile){
+						echo('<div style="background:'.$this->getcolor($tile).'">'.$tile.'</div>');
+						if ($i%4==3) echo('</div><div>');
 					}
-			?>
+					echo('<br><br>');
+				?>
+				</div>
 			</div>
 			<form action="index.php" method="post">
-				<label for="msg">Entrez votre message: </label>
-				<input type="text" name="msg" id="msg" required>
 				<input type="hidden" name="pseudo" value="<?php
 					echo($_POST['pseudo']);
 				?>">
 				<br>
 				<br>
-				<input type="submit" name="soumettre" value="envoyer"/>
+				<input type="submit" name="move" value="UP"/>
+				<input type="submit" name="move" value="DOWN"/>
+				<input type="submit" name="move" value="LEFT"/>
+				<input type="submit" name="move" value="RIGHT"/>
 			</form>
 			<br>
 			<br>

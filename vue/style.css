@@ -1,0 +1,73 @@
+body{
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+body, html {
+    height: 100%;
+    display: grid;
+}
+#login { 
+    background: rgb(40,40,40);
+}
+
+.cont{
+    margin: auto;
+    display: grid;
+    border:20px solid;
+    border-radius: 40px;
+    padding:5%;
+    width:70%;
+
+}
+
+#login *{
+    margin: auto;
+    width: 100%;
+}
+
+#tileset {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#tileset div{
+    width:100%;
+}
+
+#submit{
+    width: 105%;
+}
+
+#labelpseudo{
+    color: white;
+}
+
+#pseudo{
+    margin-top:5%;
+}
+
+.button {
+    box-shadow:inset 0px 1px 0px 0px #fbafe3;
+    background:linear-gradient(to bottom, #ff5bb0 5%, #ef027d 100%);
+    background-color:#ff5bb0;
+    border-radius:6px;
+    border:1px solid #ee1eb5;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #c70067;
+}
+.button:hover {
+    background:linear-gradient(to bottom, #ef027d 5%, #ff5bb0 100%);
+    background-color:#ef027d;
+}
+.button:active {
+    position:relative;
+    top:1px;
+}
