@@ -27,7 +27,7 @@ class Routeur {
 			$pseudo='';
 		}
 		$this->pseudo=$this->user=$this->ctrlAuthentification->accueil($pseudo);
-		if ($pseudo!=''){
+		if ($this->pseudo!=''){
 			$this->ctrlJeu->accueil();
 		}
 		
