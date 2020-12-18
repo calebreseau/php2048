@@ -26,32 +26,45 @@ class Vue{
 	}
 
 	//TODO: add method
-	function afficherSalon(array $chatitems){
+	function afficherTiles($tiles){
 		?>
 		<!DOCTYPE html>
 		<html>
 		<head> 
-			<title>TD6: Salon textuel </title>
+			<title>2048</title>
+			<style>/*
+				#tileset{
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+				}
+
+				*/	
+			</style>
 		</head>
 		<body>
 			<br>
 			<br>
-			<div style="border: solid;">
+			<div id="tileset" style="border: solid;">
 				<?php
-					foreach (array_reverse($chatitems) as $_chatitem){
-						echo($_chatitem.'<br/>');
+					foreach($tiles as $xindex=>$row){
+						echo('<br>');
+						foreach($row as $yindex=>$tile){
+							echo('<span id="'.strval(3*($xindex-1)+$yindex).'" class="'.$tile.' row'.strval($xindex).'">'.$tile.'</span>');
+						}
 					}
 			?>
 			</div>
 			<form action="index.php" method="post">
-				<label for="msg">Entrez votre message: </label>
-				<input type="text" name="msg" id="msg" required>
 				<input type="hidden" name="pseudo" value="<?php
 					echo($_POST['pseudo']);
 				?>">
 				<br>
 				<br>
-				<input type="submit" name="soumettre" value="envoyer"/>
+				<input type="submit" name="move" value="UP"/>
+				<input type="submit" name="move" value="DOWN"/>
+				<input type="submit" name="move" value="LEFT"/>
+				<input type="submit" name="move" value="RIGHT"/>
 			</form>
 			<br>
 			<br>

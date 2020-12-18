@@ -12,19 +12,18 @@ class ControleurJeu{
 	}
 
 	function accueil(){
-        $gettiles=split($_GET['tiles'],',');
-        $tileset=new TileSet($gettiles);
-        switch ($_GET['move']){
-            case 'up':
-                $offset=-3;
-            case 'down':
-                $offset=3;
-            case 'left':
-                $offset=-1
-                foreach ($tiles as $tile){
-                    if (isset($tiles-3))
-                }
+        if (isset($_GET['tiles'])){
+            $gettiles=explode($_GET['tiles'],',');
         }
+        else{
+            $gettiles='2,0,0,0,0,0,0,0,0';
+        }
+        $tileset=new TileSet($gettiles);
+        echo($_POST['move']);
+        if (isset($_POST['move'])){
+            $tileset->move(strtolower($_POST['move']));
+        }
+        $this->vue->afficherTiles($tileset->tiles);
 	}
 
 
