@@ -6,18 +6,19 @@ body, html {
     height: 100%;
     display: grid;
 }
-#login { 
-    background: rgb(40,40,40);
-}
 
 .cont{
     margin: auto;
-    display: grid;
+    text-align:center;
     border:20px solid;
     border-radius: 40px;
     padding:5%;
-    width:70%;
+    width:30%;
 
+}
+
+#login { 
+    background: rgb(40,40,40);
 }
 
 #login *{
@@ -27,24 +28,59 @@ body, html {
 
 #tileset {
     display: flex;
+    position: relative;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
-#tileset div{
-    width:100%;
+.row{
+    padding: 0px;
+    display: inline !important;
+    height: 90px;
+}
+.tile{
+    box-sizing: content-box;
+    width:20%;
+    line-height: 500%;
+    display: inline-block;
+    margin-right: 2%;
+    margin-bottom: 2px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.zero{
+    color:white;
 }
 
 #submit{
-    width: 105%;
+    display: inline-block;
+    width: 40%;
+    height: 30%;
 }
 
 #labelpseudo{
     color: white;
+    font-size: 250%;
 }
 
 #pseudo{
-    margin-top:5%;
+    margin:10%;
+    width: 40%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 10px 20px;
+    border: 1px solid #b7b7b7;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    font: normal 23px/normal Arial Black, Gadget, sans-serif;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    letter-spacing: 2px;
+    background: rgb(40,40,40);
 }
 
 .button {
@@ -57,7 +93,7 @@ body, html {
     cursor:pointer;
     color:#ffffff;
     font-family:Arial;
-    font-size:15px;
+    font-size:30px;
     font-weight:bold;
     padding:6px 24px;
     text-decoration:none;

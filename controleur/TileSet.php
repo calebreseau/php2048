@@ -28,34 +28,52 @@ class TileSet{
     function move($dir){
         $this->angle=$dir;
         $this->rotate($this->angle);
-        return;
-        for ($l=0;$l<4;$l++){
-            for($c=1;$c<4;$c++){
-                if ($this->tiles[$l*4+$c]==$this->tiles[$l*4+$c-1]){
-                    $this->tiles[$l*4+$c-1]*=2;
-                    $this->tiles[$l*4+$c]*=0;
-                }
-                if ($this->tiles[$l*4+$c-1]==0){
-                    for ($k=0;$k<=2-$c;$k++){
-                        $this->tiles[$l*4+$c+$k]=$this->tiles[$l*4+$c+$k+1];
+        //return;
+        //for ($l=0;$l<4;$l++){
+        //    for($c=1;$c<4;$c++){
+        //        if ($this->tiles[$l*4+$c]==$this->tiles[$l*4+$c-1]){
+        //            $this->tiles[$l*4+$c-1]*=2;
+        //            $this->tiles[$l*4+$c]*=0;
+        //        }
+        //        if ($this->tiles[$l*4+$c-1]==0){
+        //            for ($k=0;$k<=2-$c;$k++){
+        //                $this->tiles[$l*4+$c+$k]=$this->tiles[$l*4+$c+$k+1];
+        //            }
+        //            $this->tiles[$l*4+3]=0;
+        //            for ($i=0;$i<4-$c;$i++){
+        //                if ($this->tiles[$l*4+$c+$i]!=0){
+        //                    $c--;
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //        
+        //    }
+        //}
+
+        for ($i=0;$i<4;$i++){
+            for($j=1;$j<4;$j++){
+                $k=$j;
+                $stop=false;
+                while($stop==false){
+                    if ($this->tiles[$i*4+$k]==$this->tiles[$i*4+$k-1]){
+                        $this->tiles[$i*4+$k-1]*=2;
+                        $this->tiles[$i*4+$k]=0;
+                    } elseif ($this->tiles[$i*4+$k-1]==0){
+                        $this->tiles[$i*4+$k-1]=$this->tiles[$i*4+$k];
+                        $this->tiles[$i*4+$k]=0;
+                    } else {
+                        $stop=true;
                     }
-                    $this->tiles[$l*4+3]=0;
-                    for ($i=0;$i<4-$c;$i++){
-                        if ($this->tiles[$l*4+$c+$i]!=0){
-                            $c--;
-                            break;
-                        }
-                    }
+                    if ($k<(4-$j)) $k++; else $stop=true;
                 }
-                
             }
         }
-    }
 
-    function restore(){
-        $this->move(4-$this->angle);
+        $this->rotate(4-$this->angle);
         $this->angle=0;
     }
+
 
     function display(){
         foreach ($this->tiles as $i=>$tile){

@@ -1,4 +1,4 @@
-?php 
+<?php 
 class Vue{
 
 	function demandePseudo(){
@@ -17,7 +17,7 @@ class Vue{
 					<label id="labelpseudo" for="pseudo">Entrez votre pseudo</label>
 					<input type="text" name="pseudo" id="pseudo" required>
 					<br>
-					<input id="submit" type="submit" name="soumettre" value="envoyer"/>
+					<input class="button" id="submit" type="submit" name="soumettre" value="envoyer"/>
 				</form>
 			</div>
 			<br>
@@ -48,16 +48,15 @@ class Vue{
 			<br>
 			<br>
 			<div id="tileset" class='cont' style="border: solid;">
-				<div>
 				<?php
-					echo('<div>');
+					echo('<div class="row">');
 					foreach ($tiles as $i=>$tile){
-						echo('<div style="background:'.$this->getcolor($tile).'">'.$tile.'</div>');
-						if ($i%4==3) echo('</div><div>');
+						if ($tile==0) $class='"zero tile"'; else $class='"tile"';
+						echo('<div class='.$class.' style="background:'.$this->getcolor($tile).'">'.$tile.'</div>');
+						if ($i%4==3 && $i!=count($tiles)-1) echo('</div><div class="row">');
 					}
 					echo('<br><br>');
 				?>
-				</div>
 			</div>
 			<form action="index.php" method="post">
 				<input type="hidden" name="pseudo" value="<?php
